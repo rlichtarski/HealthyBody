@@ -1,3 +1,5 @@
 export const config = {
-    // fonts, sizes etc
+    fonts : {
+        Regular : 'Roboto, sans-serif'
+    }
 };
