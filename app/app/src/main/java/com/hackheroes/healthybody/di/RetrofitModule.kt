@@ -6,6 +6,7 @@ import com.hackheroes.healthybody.R
 import com.hackheroes.healthybody.api.BmiApi
 import com.hackheroes.healthybody.util.Constants
 import com.hackheroes.healthybody.util.Constants.Companion.BASE_URL
+import com.hackheroes.healthybody.util.LiveDataCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,17 +32,19 @@ object RetrofitModule {
             .create()
     }
 
+    @Singleton
     @Provides
     fun providesLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     }
 
+    @Singleton
     @Provides
     fun providesOkhttpInterceptor() : Interceptor {
         return  Interceptor { chain: Interceptor.Chain ->
             val original: Request = chain.request()
             val requestBuilder: Request.Builder = original.newBuilder()
-                .addHeader("x-rapidapi-key", R.string.bmi_api_key.toString())
+                .addHeader("x-rapidapi-key", "572ae3c403mshec4f37878016791p15bb99jsn14739a34bc21")
                 .addHeader("x-rapidapi-host", "bmi.p.rapidapi.com")
                 .addHeader("content-type", "application/json")
                 .addHeader("accept", "application/json")
@@ -52,6 +55,7 @@ object RetrofitModule {
         }
     }
 
+    @Singleton
     @Provides
     fun providesOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
@@ -60,9 +64,9 @@ object RetrofitModule {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .addInterceptor(interceptor)
-            .callTimeout(30, TimeUnit.SECONDS)
+            /*.callTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)*/
             .build()
     }
 
@@ -73,6 +77,7 @@ object RetrofitModule {
             .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()
     }
 
