@@ -5,25 +5,33 @@
     android:layout_height="match_parent"
     android:background="#202020">
 
+    <View
+        android:id="@+id/focusable_view"
+        android:layout_width="0.5dp"
+        android:layout_height="0.5dp"
+        android:focusableInTouchMode="true" />
+
     <TextView
         android:id="@+id/heart_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/heart_hdpi" />
 
     <TextView
-    android:id="@+id/enter_data_txt_view"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/heart_icon"
-    android:layout_marginTop="15dp"
-    android:layout_centerHorizontal="true"
-    android:fontFamily="@font/roboto_bold"
-    android:text="Zadbaj o swoje zdrowie"
-    android:textColor="#fff"
-    android:textSize="30sp" />
+        android:id="@+id/enter_data_txt_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/heart_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Zadbaj o swoje zdrowie"
+        android:textColor="#fff"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/your_health_txt_view"
@@ -37,18 +45,19 @@
         android:textSize="30sp" />
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/your_health_txt_view"
-        android:layout_marginTop="15dp"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             app:cardBackgroundColor="#303030"
             app:cardCornerRadius="40dp">
 
@@ -56,38 +65,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/register_input_email"
-                    android:layout_width="250dp"
-                    android:layout_height="45dp"
-                    android:layout_below="@+id/register_input_username"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="70dp"
-                    android:background="@drawable/input_field"
-                    android:hint="Adres e-mail"
-                    android:textColorHighlight="#fff"
-                    android:textColorHint="#fff" />
-
                 <Button
                     android:id="@+id/choose_login_button"
                     android:layout_width="250dp"
-                    android:layout_height="45dp"
+                    android:layout_height="50dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="70dp"
                     android:background="@drawable/launcher_button"
-                    android:textColor="#fff"
-                    android:text="Login" />
+                    android:text="Zaloguj się"
+                    android:textColor="#fff" />
 
                 <Button
                     android:id="@+id/choose_register_button"
                     android:layout_width="250dp"
-                    android:layout_height="45dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/choose_login_button"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="60dp"
                     android:background="@drawable/launcher_button"
-                    android:layout_below="@+id/choose_login_button"
-                    android:textColor="#fff"
-                    android:text="Register" />
+                    android:text="Zarejestruj się"
+                    android:textColor="#fff" />
 
             </RelativeLayout>
 

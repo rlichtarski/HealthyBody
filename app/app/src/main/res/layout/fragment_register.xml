@@ -5,12 +5,19 @@
     android:layout_height="match_parent"
     android:background="#202020">
 
+    <View
+        android:id="@+id/focusable_view"
+        android:layout_width="0.5dp"
+        android:layout_height="0.5dp"
+        android:focusableInTouchMode="true" />
+
     <TextView
         android:id="@+id/heart_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/heart_hdpi" />
 
     <TextView
@@ -29,7 +36,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/hello_user_txt_view"
-        android:layout_marginTop="6dp"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto_bold"
         android:text="Wprowadź swoje dane"
@@ -45,10 +51,9 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
             android:layout_width="300dp"
-            android:layout_height="350dp"
-
+            android:layout_height="360dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             app:cardBackgroundColor="#303030"
             app:cardCornerRadius="40dp">
 
@@ -59,30 +64,32 @@
                 <EditText
                     android:id="@+id/register_input_username"
                     android:layout_width="250dp"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="45dp"
+                    android:layout_marginTop="35dp"
                     android:background="@drawable/input_field"
                     android:hint="Nazwa użytkownika"
                     android:textColorHighlight="#fff"
+                    android:textColor="#fff"
                     android:textColorHint="#fff" />
 
                 <EditText
                     android:id="@+id/register_input_email"
                     android:layout_width="250dp"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/register_input_username"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/input_field"
                     android:hint="Adres e-mail"
                     android:textColorHighlight="#fff"
+                    android:textColor="#fff"
                     android:textColorHint="#fff" />
 
                 <EditText
                     android:id="@+id/register_input_password"
                     android:layout_width="250dp"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/register_input_email"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
@@ -90,12 +97,13 @@
                     android:hint="Hasło"
                     android:inputType="textPassword"
                     android:textColorHighlight="#fff"
+                    android:textColor="#fff"
                     android:textColorHint="#fff" />
 
                 <EditText
                     android:id="@+id/register_input_confirm_password"
                     android:layout_width="250dp"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/register_input_password"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
@@ -103,6 +111,7 @@
                     android:hint="Potwierdź hasło"
                     android:inputType="textPassword"
                     android:textColorHighlight="#fff"
+                    android:textColor="#fff"
                     android:textColorHint="#fff" />
 
             </RelativeLayout>
@@ -122,15 +131,5 @@
             android:text="Zarejestruj się"
             android:textColor="#fff" />
     </RelativeLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="4dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="@string/data_not_used"
-        android:textColor="#fff" />
 
 </RelativeLayout>
