@@ -29,10 +29,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/hello_user_txt_view"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto_bold"
-        android:text="Wprowadź swoje dane"
+        android:text="Zaloguj się"
         android:textColor="#fff"
         android:textSize="30sp" />
 
@@ -40,13 +40,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/enter_data_txt_view"
+        android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
             android:layout_width="300dp"
-            android:layout_height="350dp"
-
+            android:layout_height="300dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             app:cardBackgroundColor="#303030"
@@ -57,23 +57,11 @@
                 android:layout_height="match_parent">
 
                 <EditText
-                    android:id="@+id/register_input_username"
+                    android:id="@+id/login_input_email"
                     android:layout_width="250dp"
-                    android:layout_height="40dp"
+                    android:layout_height="45dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="45dp"
-                    android:background="@drawable/input_field"
-                    android:hint="Nazwa użytkownika"
-                    android:textColorHighlight="#fff"
-                    android:textColorHint="#fff" />
-
-                <EditText
-                    android:id="@+id/register_input_email"
-                    android:layout_width="250dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/register_input_username"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="70dp"
                     android:background="@drawable/input_field"
                     android:hint="Adres e-mail"
                     android:textColorHighlight="#fff"
@@ -82,25 +70,12 @@
                 <EditText
                     android:id="@+id/register_input_password"
                     android:layout_width="250dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/register_input_email"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/login_input_email"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="60dp"
                     android:background="@drawable/input_field"
                     android:hint="Hasło"
-                    android:inputType="textPassword"
-                    android:textColorHighlight="#fff"
-                    android:textColorHint="#fff" />
-
-                <EditText
-                    android:id="@+id/register_input_confirm_password"
-                    android:layout_width="250dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/register_input_password"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/input_field"
-                    android:hint="Potwierdź hasło"
                     android:inputType="textPassword"
                     android:textColorHighlight="#fff"
                     android:textColorHint="#fff" />
@@ -119,18 +94,8 @@
             android:background="@drawable/login_button"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/roboto_bold"
-            android:text="Zarejestruj się"
+            android:text="Zaloguj się"
             android:textColor="#fff" />
     </RelativeLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="4dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="@string/data_not_used"
-        android:textColor="#fff" />
 
 </RelativeLayout>
