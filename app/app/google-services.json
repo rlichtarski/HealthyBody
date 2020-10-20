@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "957886856859",
+    "firebase_url": "https://healthybody-91d0f.firebaseio.com",
+    "project_id": "healthybody-91d0f",
+    "storage_bucket": "healthybody-91d0f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957886856859:android:a6b91f95ea791f9116d03e",
+        "android_client_info": {
+          "package_name": "com.hackheroes.healthybody"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957886856859-pcg512ehcu78cvnq967jhu5vr4374l57.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackheroes.healthybody",
+            "certificate_hash": "29a6e94c1358e187f62b0ea05ec1e14d1bf30b59"
+          }
+        },
+        {
+          "client_id": "957886856859-c15ddj6msh81vj979mffrabqdddj72ms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUxl507zba0GF-p2i40JPJHD5URMDLorI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957886856859-c15ddj6msh81vj979mffrabqdddj72ms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

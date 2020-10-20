@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.hackheroes.healthybody.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_launcher.*
 
+@AndroidEntryPoint
 class LauncherFragment: Fragment() {
 
     override fun onCreateView(
