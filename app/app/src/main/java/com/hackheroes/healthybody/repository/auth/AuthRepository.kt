@@ -32,9 +32,10 @@ constructor(
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     firebaseAuth.createUserWithEmailAndPassword(email, password)
-                    withContext(Dispatchers.Main) {
-                        setUsernameAfterRegistration(username)
-                    }
+                        .addOnSuccessListener {
+                            Log.d(TAG, "attemptRegistration: successfuly registered a new user")
+                            setIsAuthenticated(isAuthenticated = true)
+                        }
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
                         Log.e(TAG, "attemptRegistration: an error occurred")
@@ -44,7 +45,30 @@ constructor(
         }
     }
 
-    private suspend fun setUsernameAfterRegistration(username: String) {
+    fun attemptLogin(email: String, password: String) {
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    firebaseAuth.signInWithEmailAndPassword(email, password)
+                        .addOnSuccessListener {
+                            Log.d(TAG, "attemptLogin: successfully logged in a user ${firebaseAuth.currentUser?.displayName}")
+                            setIsAuthenticated(isAuthenticated = true)
+                        }
+
+                } catch (e: Exception) {
+                    withContext(Dispatchers.Main) {
+                        Log.e(TAG, "attemptLogin: an error occurred")
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setIsAuthenticated(isAuthenticated: Boolean) {
+        _isSignedIn.value = isAuthenticated
+    }
+
+    /*private suspend fun setUsernameAfterRegistration(username: String) {
         firebaseAuth.currentUser?.let { user ->
             val profileUpdates = UserProfileChangeRequest.Builder()
                 .setPhotoUri(Uri.parse("android.resource://com.hackheroes.healthybody/${R.drawable.heart_hdpi}"))
@@ -65,25 +89,7 @@ constructor(
             }
 
         }
-    }
-
-    fun attemptLogin(email: String, password: String) {
-        if (email.isNotEmpty() && password.isNotEmpty()) {
-            CoroutineScope(Dispatchers.IO).launch {
-                try {
-                    firebaseAuth.signInWithEmailAndPassword(email, password)
-                        withContext(Dispatchers.Main) {
-                            Log.d(TAG, "attemptLogin: successfully logged in a user ${firebaseAuth.currentUser?.displayName}")
-                        }
-                } catch (e: Exception) {
-                    withContext(Dispatchers.Main) {
-                        Log.e(TAG, "attemptLogin: an error occurred")
-                    }
-                }
-            }
-        }
-    }
-
+    }*/
 
     /*fun attemptLogin(email: String, password: String): LiveData<DataState<AuthViewState>>{
 
@@ -191,7 +197,6 @@ constructor(
         Log.d(TAG, "AuthRepository: Cancelling on-going jobs...")
         repositoryJob?.cancel()
     }*/
-
 
 
 }

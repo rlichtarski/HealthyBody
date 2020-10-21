@@ -2,6 +2,7 @@ package com.hackheroes.healthybody.ui.auth
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.hackheroes.healthybody.repository.auth.AuthRepository
@@ -17,6 +18,10 @@ class AuthViewModel @ViewModelInject constructor(
 
     fun login(email: String, password: String) {
         authRepository.attemptLogin(email, password)
+    }
+
+    fun isSignedIn(): LiveData<Boolean> {
+        return authRepository.isSignedIn
     }
 
     /*override fun initNewViewState(): AuthViewState {
