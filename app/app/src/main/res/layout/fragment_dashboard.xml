@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#202020">
+
+    <TextView
+        android:id="@+id/dashboard_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Dashboard"
+        android:textColor="#fff"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/dashboard_text"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/ic_person_outline_24px" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/user_data_card_view"
+        android:layout_width="330dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/dashboard_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="#303030"
+        app:cardCornerRadius="50dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/username_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Twoje imie"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bmi_card_view"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/user_data_card_view"
+        android:layout_alignStart="@+id/user_data_card_view"
+        android:layout_marginTop="40dp"
+        app:cardBackgroundColor="#303030"
+        app:cardCornerRadius="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/your_bmi_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Twoje BMI"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/bmi_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/your_bmi_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:text="0000"
+                android:textColor="#fff"
+                android:textSize="40sp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/kcal_need_card_view"
+        android:layout_width="190dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/user_data_card_view"
+        android:layout_alignEnd="@+id/user_data_card_view"
+        android:layout_marginTop="40dp"
+        app:cardBackgroundColor="#303030"
+        app:cardCornerRadius="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/kcal_need_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Twoje zapotrzebowanie kaloryczne"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/kcal_need_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/kcal_need_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:text="0000 kcal"
+                android:textColor="#fff"
+                android:textSize="30sp" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_below="@+id/bmi_card_view"
+        android:layout_alignStart="@+id/bmi_card_view"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="2dp"
+        app:cardCornerRadius="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/burned_kcal_cview_gradient">
+
+            <TextView
+                android:id="@+id/image_shoe"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/runningw" />
+
+            <TextView
+                android:id="@+id/today_you_burned_info_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/image_shoe"
+                android:layout_alignBottom="@+id/image_shoe"
+                android:layout_marginEnd="15dp"
+                android:layout_toEndOf="@+id/image_shoe"
+                android:text="Dzisiaj chodziłeś i spaliłeś"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/burned_calories_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_shoe"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="0000 kcal"
+                android:textAlignment="center"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="#fff"
+                android:textSize="26sp" />
+
+            <TextView
+                android:id="@+id/highest_velocity_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_below="@+id/burned_calories_value"
+                android:layout_centerHorizontal="true"
+                android:text="Najwyższa prędkość:"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/highest_velocity_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/highest_velocity_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="0000 km/h"
+                android:textAlignment="center"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/walked_distance_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_below="@+id/highest_velocity_value"
+                android:layout_centerHorizontal="true"
+                android:text="Przeszedłeś ponad"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/walked_distance_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/walked_distance_info"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="0000 km"
+                android:textAlignment="center"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:layout_marginBottom="15dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/kcal_need_card_view"
+        android:layout_alignEnd="@+id/kcal_need_card_view"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="2dp"
+        app:cardCornerRadius="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/daily_meal_gradient">
+
+            <TextView
+                android:id="@+id/meal_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/dish_7256px_whtie"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    
+
+</RelativeLayout>
