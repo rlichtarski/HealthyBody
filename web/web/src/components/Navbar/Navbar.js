@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import './Navbar.css';
 import { config } from '../../utils/config';
 import { toggleClass } from './navbarController';
+import { logo } from '../../assets/logo.svg';
 
 class Navbar extends Component {
     render() {
         return (
-            <GlobalStyle>
+            <GlobalStyle className="navbar">
             <Wrapper>
                     <Hamburger>
                         <div className="hamburger">
@@ -17,7 +18,8 @@ class Navbar extends Component {
             </Wrapper>
                     <Menu>
                         <div className="menu">
-                            <HeaderLogo>Healthy Body</HeaderLogo>
+                            {/* <HeaderLogo src="https://i.picsum.photos/id/908/200/200.jpg?hmac=CovMVsq4EkU03tnOxNLyxYsLlemPPHBizxcnmaHaRcU"/> */}
+                            <HeaderLogo src={logo}/>
                             <div className="navbarList">
                                 <h1>Zdrowie</h1>
                                 <h1>Dieta &amp; Fitness</h1>
@@ -58,7 +60,7 @@ const Menu = styled.div`
     .menuToggle {
         display: block;
         z-index: 100;
-        background-color: rgba(200,200,200,0.9);
+        background-color: black;
         position: absolute;
         height: 95%;
         width: 100%;
@@ -68,7 +70,7 @@ const Menu = styled.div`
         .menu{
             display: flex;
             justify-content: space-around;
-            border-bottom: blueviolet 1px solid;
+            /* border-bottom: blueviolet 1px solid; */
         }
 
         .menu > .navbarList {
@@ -81,27 +83,15 @@ const Menu = styled.div`
             transition: linear 0.2s all;
         }
 
-        h1:hover:after, h1:hover{
-            display: block;
-            transform: scale(1.05,1.05)
-        }
-
-        h1:after{
-            content: '';
-            display: none;
-            width: 100%;
-            height: 0.1rem;
-            background-color: black;
-            border-radius: 23%;
+        h1:hover{
+            color: white;
+            background: #000523;
+            border-radius: -20%;
+            
         }
 
         .menu > .navbarList > h1 {
             font-size: 1rem;
-        }
-
-        #contactH1 {
-            font-size: 1rem;
-            font-weight: bold;
         }
 
         .menuToggle {
@@ -131,7 +121,7 @@ const Hamburger = styled.div`
         width: 1.5rem;
         height: 0.2rem;
         margin-top: 0.70rem;
-        background-color: black;
+        background-color: white;
         border-radius: 15%;
         transition: all ease 1s;
     }
@@ -142,7 +132,7 @@ const Hamburger = styled.div`
         width: 1.5rem;
         margin-top: 0.5rem;
         height: 0.2rem;
-        background-color: black;
+        background-color: white;
         border-radius: 15%;
         transition: all ease 3s;
     }
@@ -153,7 +143,7 @@ const Hamburger = styled.div`
         width: 1.5rem;
         margin-top: 1rem;
         height: 0.2rem;
-        background-color: black;
+        background-color: white;
         border-radius: 15%;
         transition: all ease 1s;
     }
@@ -180,12 +170,14 @@ const Hamburger = styled.div`
     }
 `
 
-const HeaderLogo = styled.h2`
-    font-family: 'Indie Flower', 'Sansita Swashed', cursive;
-    font-size: 2rem;
+const HeaderLogo = styled.img`
+    /* font-family: 'Indie Flower', 'Sansita Swashed', cursive; */
+    /* font-size: 2rem; */
+    width: 3rem;
+    height: 3rem;
 
     @media (max-width: 768px) {
-        font-size: 1.7rem;
+        /* font-size: 1.7rem; */
     }
 `
 
@@ -202,6 +194,6 @@ const GlobalStyle = styled.div`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-`
+    `
 
 export default Navbar;
