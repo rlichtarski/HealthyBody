@@ -1,11 +1,11 @@
 package com.hackheroes.healthybody
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.hackheroes.healthybody.ui.BmiViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         bmiViewModel = ViewModelProvider(this).get(BmiViewModel::class.java)
+
+        findNavController(R.id.main_nav_host_fragment)
 
         subscribeObservers()
     }
