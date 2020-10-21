@@ -52,7 +52,13 @@ constructor(
                 .build()
 
             withContext(Dispatchers.IO) {
-                user.updateProfile(profileUpdates)
+                user.updateProfile(profileUpdates).addOnCompleteListener {
+                    if(it.isSuccessful) {
+                        Log.d(TAG, "setUsernameAfterRegistration: user profile updated")
+                    } else {
+                        Log.e(TAG, "setUsernameAfterRegistration: error")
+                    }
+                }
             }
             withContext(Dispatchers.Main) {
                 Log.d(TAG, "attemptRegistration: successfully registered a user.")
