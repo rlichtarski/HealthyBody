@@ -43,6 +43,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun register() {
+        val username: String = register_input_username.text.toString()
         val email: String = register_input_email.text.toString()
         val password: String = register_input_password.text.toString()
         val confirm_password: String = register_input_confirm_password.text.toString()
@@ -51,7 +52,12 @@ class RegisterFragment : Fragment() {
             Toast.makeText(context , "hasła się nie zgadzają", Toast.LENGTH_SHORT).show()
         }
 
-        authViewModel.register(email, password)
+
+        if(password.length > 6 && confirm_password.length > 6) {
+            authViewModel.register(username, email, password)
+        } else {
+            Toast.makeText(requireActivity(), "hasło nie może mieć mniej niż 6 znaków", Toast.LENGTH_SHORT).show()
+        }
 
     }
 }

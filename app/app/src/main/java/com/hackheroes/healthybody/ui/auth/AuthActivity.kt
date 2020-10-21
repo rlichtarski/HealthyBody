@@ -21,6 +21,8 @@ class AuthActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
+        mAuth.signOut()
+
         findNavController(R.id.auth_nav_host_fragment)
     }
 
@@ -38,7 +40,7 @@ class AuthActivity: AppCompatActivity() {
     private fun checkLoggedInState() {
         if (mAuth.currentUser == null) { // not logged in
         } else {
-            navMainActivity()
+            //navMainActivity()
         }
     }
 }

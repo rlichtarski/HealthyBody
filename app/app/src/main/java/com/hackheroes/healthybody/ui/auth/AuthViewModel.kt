@@ -2,25 +2,21 @@ package com.hackheroes.healthybody.ui.auth
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.hackheroes.healthybody.repository.auth.AuthRepository
-import com.hackheroes.healthybody.ui.BaseViewModel
-import com.hackheroes.healthybody.ui.DataState
-import com.hackheroes.healthybody.ui.auth.state.AuthStateEvent
-import com.hackheroes.healthybody.ui.auth.state.AuthViewState
-import com.hackheroes.healthybody.ui.auth.state.LoginFields
-import com.hackheroes.healthybody.ui.auth.state.RegistrationFields
-import javax.inject.Inject
 
 class AuthViewModel @ViewModelInject constructor(
     private val authRepository: AuthRepository,
     @Assisted private val savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
-    fun register(email: String, password: String) {
-        authRepository.attemptRegistration(email, password)
+    fun register(username: String, email: String, password: String) {
+        authRepository.attemptRegistration(username, email, password)
+    }
+
+    fun login(email: String, password: String) {
+        authRepository.attemptLogin(email, password)
     }
 
     /*override fun initNewViewState(): AuthViewState {

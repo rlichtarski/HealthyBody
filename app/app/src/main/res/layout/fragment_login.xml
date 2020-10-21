@@ -75,7 +75,7 @@
                     android:textColorHint="#fff" />
 
                 <EditText
-                    android:id="@+id/register_input_password"
+                    android:id="@+id/login_input_password"
                     android:layout_width="250dp"
                     android:layout_height="50dp"
                     android:layout_below="@+id/login_input_email"
@@ -93,7 +93,7 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/register_button"
+            android:id="@+id/login_button"
             android:layout_width="150dp"
             android:layout_height="35dp"
             android:layout_below="@+id/card_view"
