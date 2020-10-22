@@ -43,13 +43,13 @@ constructor(
                             userId = firebaseAuth.currentUser?.uid!!
                             val documentReference: DocumentReference = personCollectionRef.document(userId)
                             val user = mutableMapOf<String, Any>()
-                            user["fName"] = username
+                            user["name"] = username
                             user["email"] = email
-                            user["weight"] = 70.00
+                            user["weight"] = "70.00"
                             user["sex"] = "m"
-                            user["height"] = 175.00
-                            user["age"] = 25
-                            user["bmi"] = 22.9
+                            user["height"] = "175.00"
+                            user["age"] = "25"
+                            user["bmi"] = "22.9"
                             documentReference.set(user).addOnSuccessListener {
                                 Log.d(TAG, "attemptRegistration: user profile is created for: + $userId")
                             }
