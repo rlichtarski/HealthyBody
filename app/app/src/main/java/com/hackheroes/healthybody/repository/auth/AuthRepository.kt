@@ -1,13 +1,14 @@
 package com.hackheroes.healthybody.repository.auth
 
 import android.content.Context
-import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
-import com.hackheroes.healthybody.R
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
@@ -15,12 +16,17 @@ class AuthRepository
 @Inject
 constructor(
     val appContext: Context,
-    val firebaseAuth: FirebaseAuth
+    val firebaseAuth: FirebaseAuth,
+    var fireStore: FirebaseFirestore
 ) {
 
     private val TAG: String = "AppDebug"
 
     private var repositoryJob: Job? = null
+
+    private lateinit var userId: String
+
+    private val personCollectionRef = Firebase.firestore.collection("users")
 
     protected val _isSignedIn: MutableLiveData<Boolean> = MutableLiveData()
 
@@ -33,7 +39,20 @@ constructor(
                 try {
                     firebaseAuth.createUserWithEmailAndPassword(email, password)
                         .addOnSuccessListener {
-                            Log.d(TAG, "attemptRegistration: successfuly registered a new user")
+                            Log.d(TAG, "attemptRegistration: successfully registered a new user")
+                            userId = firebaseAuth.currentUser?.uid!!
+                            val documentReference: DocumentReference = personCollectionRef.document(userId)
+                            val user = mutableMapOf<String, Any>()
+                            user["fName"] = username
+                            user["email"] = email
+                            user["weight"] = 70.00
+                            user["sex"] = "m"
+                            user["height"] = 175.00
+                            user["age"] = 25
+                            user["bmi"] = 22.9
+                            documentReference.set(user).addOnSuccessListener {
+                                Log.d(TAG, "attemptRegistration: user profile is created for: + $userId")
+                            }
                             setIsAuthenticated(isAuthenticated = true)
                         }
                 } catch (e: Exception) {
