@@ -61,7 +61,7 @@ class DashboardFragment : Fragment() {
         mainViewModel.getUserData.observe(viewLifecycleOwner, Observer { user ->
             bmi_value.text = user.bmi
             username_text_view.text = "Witaj ${user.name}"
-            kcal_need_value.text = user.bmr
+            kcal_need_value.text = "${user.bmr} kcal"
         })
     }
 

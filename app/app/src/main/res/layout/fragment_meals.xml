@@ -10,14 +10,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_toEndOf="@+id/back_arrow_meals"
         android:fontFamily="@font/roboto_bold"
-        android:text="Zalecane potrawy na dany dzień"
-        android:textAlignment="center"
+        android:text="Zalecane potrawy na dzisiaj"
+        android:textAlignment="viewEnd"
         android:textColor="#fff"
         android:textSize="30sp"/>
 
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_arrow_back_24px"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="30dp"/>
 

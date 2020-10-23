@@ -2,4 +2,5 @@
     <string name="app_name">HealthyBody</string>
     <string name="bmi_api_key">572ae3c403mshec4f37878016791p15bb99jsn14739a34bc21</string>
     <string name="data_not_used">Twoje dane nie zostaną nigdzie udostępnione i wykorzystane</string>
+    <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>
 </resources>
