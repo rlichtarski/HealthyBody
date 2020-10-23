@@ -8,12 +8,45 @@
         android:name="com.hackheroes.healthybody.ui.main.DashboardFragment"
         android:label="DashboardFragment" >
         <action
-            android:id="@+id/action_dashboardFragment_to_mealsFragment"
-            app:destination="@id/mealsFragment" />
+            android:id="@+id/action_dashboardFragment_to_graphFragment"
+            app:destination="@id/graphFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
 
     <fragment
         android:id="@+id/mealsFragment"
         android:name="com.hackheroes.healthybody.ui.main.MealsFragment"
-        android:label="MealsFragment" />
+        android:label="MealsFragment" >
+        <action
+            android:id="@+id/action_mealsFragment_to_graphFragment2"
+            app:destination="@id/graphFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/graphFragment"
+        android:name="com.hackheroes.healthybody.ui.main.GraphFragment"
+        android:label="GraphFragment" >
+        <action
+            android:id="@+id/action_graphFragment_to_mealsFragment"
+            app:destination="@id/mealsFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+        <action
+            android:id="@+id/action_graphFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+
 </navigation>

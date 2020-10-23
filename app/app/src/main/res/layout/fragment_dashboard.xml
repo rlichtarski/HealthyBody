@@ -152,6 +152,7 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/run_card_view"
         android:layout_width="220dp"
         android:layout_height="220dp"
         android:layout_below="@+id/bmi_card_view"
@@ -270,14 +271,40 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/daily_meal_gradient">
+            android:background="@drawable/run_gradient">
 
             <TextView
                 android:id="@+id/meal_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/graph_card_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignBottom="@+id/run_card_view"
+        android:layout_alignEnd="@+id/kcal_need_card_view"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="2dp"
+        app:cardCornerRadius="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/daily_meal_gradient">
+
+            <TextView
+                android:id="@+id/graph_icon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_centerInParent="true"
-                android:background="@drawable/dish_7256px_whtie"/>
+                android:background="@drawable/improvement_white"/>
 
         </RelativeLayout>
 

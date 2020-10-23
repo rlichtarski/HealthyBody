@@ -6,11 +6,24 @@
     android:background="#202020">
 
     <TextView
+        android:id="@+id/back_arrow_meals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_arrow_back_24px"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="30dp"/>
+
+    <TextView
         android:id="@+id/meals_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_margin="30dp"
+        android:layout_below="@+id/back_arrow_meals"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:fontFamily="@font/roboto_bold"
         android:text="Zalecane potrawy na dany dzień"
         android:textAlignment="center"
