@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+const icon1 = require('../assets/injuredw.png');
+const icon2 = require('../assets/deathw.png');
+const icon3 = require('../assets/healingw.png');
 
 class CovidStatistics extends Component {
     constructor(props) {
         super(props);
         this.state = { 
             stats: {
-                infected: 0,
-                deaths: 0,
-                recovered: 0
+                infected: '00000',
+                deaths: '00000',
+                recovered: '00000'
             }
          }
     }
@@ -19,11 +22,28 @@ class CovidStatistics extends Component {
 
         return (
             <GlobalWrapper>
-                <h1>Covid Statistics</h1>
                 <Wrapper>
-                    <Stat>{infected}</Stat>
-                    <Stat>{deaths}</Stat>
-                    <Stat>{recovered}</Stat>
+                    <Stat>
+                        <img width="10%" height="50%" src={icon1}/> |
+                        <div className="statDetails">
+                            <h6>Zarażeni (dzisiaj)</h6>
+                            <h4 className="infected">{infected}</h4>
+                        </div>
+                    </Stat>
+                    <Stat>
+                        <img width="10%" height="50%" src={icon2}/> |
+                        <div className="statDetails">
+                            <h6>Zgony (dzisiaj)</h6>
+                            <h4>{deaths}</h4>
+                        </div>
+                    </Stat>
+                    <Stat>
+                        <img width="10%" height="50%" src={icon3}/> |
+                        <div className="statDetails">
+                            <h6>Wyleczeni (dzisiaj)</h6>
+                            <h4 className="recovered">{recovered}</h4>
+                        </div>
+                    </Stat>
                 </Wrapper>
             </GlobalWrapper>
         );
@@ -34,16 +54,30 @@ const Stat = styled.div`
     color: white;
     display: flex;
     justify-content: space-evenly;
-    margin: 0 3rem;
-    width: 10%;
-    height: 2rem;
-    border: solid 1px white;
-    border-radius: 15%;
+    align-items: center;
+    margin: 0 1.3rem;
+    width: 20rem;
+    height: 3.5rem;
+    border: solid 0.3rem white;
+    border-radius: 10px;
+
+    .infected {
+        color: #eb5c54;
+    }
+
+    .recovered {
+        color: green;
+    }
+
+    .statDetails {
+        display: flex;
+        flex-direction: column;
+    }
 `
  
 const Wrapper = styled.div`
     width: 100%;
-    height: 10rem;
+    height: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;

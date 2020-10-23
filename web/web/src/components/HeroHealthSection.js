@@ -5,7 +5,7 @@ class HeroHealthSection extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-
+            
          }
     }
     render() { 
@@ -13,9 +13,12 @@ class HeroHealthSection extends Component {
             <GlobalWrapper>
                 <LeftPanel>
                     <div className="upper">
-                        hej
+                        <div>elo</div>
+                        <div>elo 2</div>
+
                     </div>
                     <div className="bottom">
+                    <div>asdasdasd</div>
                     </div>
                 </LeftPanel>
             </GlobalWrapper>
@@ -32,18 +35,22 @@ const LeftPanel = styled.div`
         width: 100%;
         height: 20rem;
         background-color: black;
+        display: flex;
+        align-items: flex-end;
     }
 
     .bottom {
         width: 100%;
         height: 5rem;
         background-color: gray;
+        color: black;
+        font-size: 1.5rem;
     }
 `;
 
 const GlobalWrapper = styled.div`
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 8rem;
     color: white;
     display: flex;
     justify-content: center;

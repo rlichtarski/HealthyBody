@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import './Navbar.css';
 import { config } from '../../utils/config';
 import { toggleClass } from './navbarController';
-import { logo } from '../../assets/logo.svg';
+import { Link } from 'react-router-dom';
+const logo = require('../../assets/SVG/logo.svg')
 
 class Navbar extends Component {
     render() {
@@ -18,13 +19,12 @@ class Navbar extends Component {
             </Wrapper>
                     <Menu>
                         <div className="menu">
-                            {/* <HeaderLogo src="https://i.picsum.photos/id/908/200/200.jpg?hmac=CovMVsq4EkU03tnOxNLyxYsLlemPPHBizxcnmaHaRcU"/> */}
                             <HeaderLogo src={logo}/>
                             <div className="navbarList">
-                                <h1>Zdrowie</h1>
-                                <h1>Dieta &amp; Fitness</h1>
-                                <h1>Wiadomości</h1>
-                                <h1>Kalkulatory</h1>
+                                <NavLink>Zdrowie</NavLink>
+                                <NavLink to="/diet">Dieta &amp; Fitness</NavLink>
+                                <NavLink>Wiadomości</NavLink>
+                                <NavLink to="/calculator">Kalkulatory</NavLink>
                                 </div>
                             </div>
                     </Menu>
@@ -32,6 +32,22 @@ class Navbar extends Component {
         );
     }
 }
+
+const NavLink = styled(Link)`
+    color: white;
+    text-decoration: none;
+    transition: linear 0.4s all;
+    margin: 0 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+
+        &:hover{
+            color: white;
+            background: #000523;
+            border-radius: -20%;
+            
+        }
+`
 
 const Menu = styled.div`
 
@@ -79,16 +95,6 @@ const Menu = styled.div`
             align-items: center;
         }
 
-        h1 {
-            transition: linear 0.2s all;
-        }
-
-        h1:hover{
-            color: white;
-            background: #000523;
-            border-radius: -20%;
-            
-        }
 
         .menu > .navbarList > h1 {
             font-size: 1rem;

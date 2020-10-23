@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar/Navbar';
 import CovidStatistics from '../components/CovidStatistics';
 import HeroHealthSection from '../components/HeroHealthSection';
 
-function App() {
+function Health() {
   return (
     <div>
       <Navbar/>
@@ -14,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default Health;
