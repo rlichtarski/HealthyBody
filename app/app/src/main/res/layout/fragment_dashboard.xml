@@ -274,7 +274,7 @@
             android:background="@drawable/run_gradient">
 
             <TextView
-                android:id="@+id/meal_icon"
+                android:id="@+id/start_run_icon"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_centerInParent="true"/>
@@ -309,7 +309,5 @@
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
-
-
 
 </RelativeLayout>

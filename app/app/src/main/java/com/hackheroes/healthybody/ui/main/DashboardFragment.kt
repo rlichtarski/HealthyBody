@@ -48,8 +48,8 @@ class DashboardFragment : Fragment() {
 
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        meal_icon.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboardFragment_to_mealsFragment)
+        graph_card_view.setOnClickListener{
+            findNavController().navigate(R.id.action_dashboardFragment_to_graphFragment)
         }
 
         subscribeObservers()

@@ -12,33 +12,35 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/back_arrow_graph"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_arrow_back_24px"
-            android:layout_margin="50dp"/>
-
-        <TextView
             android:id="@+id/graph_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/back_arrow_graph"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="50dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Twój wykres"
             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="30sp"/>
 
+        <TextView
+            android:id="@+id/back_arrow_graph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_arrow_back_24px"
+            android:layout_alignTop="@+id/graph_text"
+            android:layout_marginStart="30dp"/>
+
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="center">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/your_weight_card_view"
@@ -105,7 +107,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="10dp"
             app:cardCornerRadius="8dp">
 
             <RelativeLayout

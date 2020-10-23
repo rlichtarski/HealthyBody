@@ -12,7 +12,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hackheroes.healthybody.R
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.android.synthetic.main.fragment_graph.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -42,8 +42,12 @@ class GraphFragment : Fragment() {
 
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        meal_icon.setOnClickListener {
-            //findNavController().navigate(R.id.action_dashboardFragment_to_mealsFragment)
+        back_arrow_graph.setOnClickListener {
+            findNavController().navigate(R.id.action_graphFragment_to_dashboardFragment)
+        }
+
+        see_your_meals_card_view.setOnClickListener {
+            findNavController().navigate(R.id.action_graphFragment_to_mealsFragment)
         }
 
         subscribeObservers()
