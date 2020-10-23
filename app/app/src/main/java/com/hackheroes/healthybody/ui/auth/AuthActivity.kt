@@ -2,6 +2,7 @@ package com.hackheroes.healthybody.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,15 +20,13 @@ class AuthActivity: AppCompatActivity() {
     @Inject
     lateinit var mAuth: FirebaseAuth
 
-    lateinit var authViewModel: AuthViewModel
+    private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
         mAuth.signOut()
-
-        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
 
         findNavController(R.id.auth_nav_host_fragment)
         subscribeObservers()

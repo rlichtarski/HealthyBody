@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.hackheroes.healthybody.R
@@ -20,7 +21,7 @@ class RegisterFragment : Fragment() {
     @Inject
     lateinit var mAuth: FirebaseAuth
 
-    lateinit var authViewModel: AuthViewModel
+    private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,8 +33,6 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
 
         register_button.setOnClickListener {
             register()

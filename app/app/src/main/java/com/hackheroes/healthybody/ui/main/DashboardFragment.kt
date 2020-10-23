@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -27,7 +28,7 @@ class DashboardFragment : Fragment() {
     @Inject
     lateinit var mAuth: FirebaseAuth
 
-    private lateinit var mainViewModel: MainViewModel
+    private val mainViewModel: MainViewModel by viewModels()
 
     private lateinit var userId: String
 
@@ -45,8 +46,6 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         userId = mAuth.currentUser?.uid!!
-
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         graph_card_view.setOnClickListener{
             findNavController().navigate(R.id.action_dashboardFragment_to_graphFragment)
