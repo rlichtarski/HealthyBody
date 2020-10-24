@@ -19,6 +19,7 @@ import com.google.firebase.ktx.Firebase
 import com.hackheroes.healthybody.R
 import com.hackheroes.healthybody.services.TrackingService
 import com.hackheroes.healthybody.ui.auth.AuthViewModel
+import com.hackheroes.healthybody.util.Constants.Companion.ACTION_PAUSE_SERVICE
 import com.hackheroes.healthybody.util.Constants.Companion.ACTION_START_OR_RESUME_SERVICE
 import com.hackheroes.healthybody.util.Constants.Companion.REQUEST_CODE_LOCATION_PERMISSION
 import com.hackheroes.healthybody.util.TrackingUtility
@@ -39,6 +40,8 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     private val mainViewModel: MainViewModel by viewModels()
 
+    private var isTracking = false
+
     private lateinit var userId: String
 
     val personCollectionRef = Firebase.firestore.collection("users")
@@ -56,8 +59,8 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         requestPermissions()
         userId = mAuth.currentUser?.uid!!
 
-        start_run_icon.setOnClickListener {
-            sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
+        toggle_run_card_view.setOnClickListener {
+            toggleRun()
         }
 
         graph_card_view.setOnClickListener{
@@ -75,6 +78,28 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             username_text_view.text = "Witaj ${user.name}"
             kcal_need_value.text = "${user.bmr} kcal"
         })
+
+        TrackingService.isTracking.observe(viewLifecycleOwner, Observer {
+            updateTracking(it)
+        })
+
+    }
+
+    private fun toggleRun() {
+        if(isTracking) {
+            sendCommandToService(ACTION_PAUSE_SERVICE)
+        } else {
+            sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
+        }
+    }
+
+    private fun updateTracking(isTracking: Boolean) {
+        this.isTracking = isTracking
+        if(!isTracking) {
+            start_run.text = "Zacznij chodzić"
+        } else {
+            start_run.text = "Stop"
+        }
     }
 
     private fun sendCommandToService(action: String) =
