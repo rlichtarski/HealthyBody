@@ -46,6 +46,8 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     val personCollectionRef = Firebase.firestore.collection("users")
 
+    private var curTimeInMillis = 0L
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -83,6 +85,11 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             updateTracking(it)
         })
 
+        TrackingService.timeRunInMillis.observe(viewLifecycleOwner, Observer {
+            curTimeInMillis = it
+            val formattedTime = TrackingUtility.getFormattedStopWatchTime(curTimeInMillis, true)
+            username_text_view.text = formattedTime
+        })
     }
 
     private fun toggleRun() {
