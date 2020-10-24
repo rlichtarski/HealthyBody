@@ -12,6 +12,10 @@ class Constants {
 
         const val BASE_URL = "https://bmi.p.rapidapi.com/"
 
+        const val RUNNING_DATABASE_NAME = "running_db"
+
+        const val REQUEST_CODE_LOCATION_PERMISSION = 0
+
         fun isNetworkConnected(context: Context) : Boolean {
             val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val capabilities =  connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
