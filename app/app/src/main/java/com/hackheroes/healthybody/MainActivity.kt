@@ -1,5 +1,6 @@
 package com.hackheroes.healthybody
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.hackheroes.healthybody.ui.BmiViewModel
+import com.hackheroes.healthybody.util.Constants.Companion.ACTION_SHOW_TRACKING_FRAGMENT
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -21,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        navigateToDashboardFragmentIfNeeded(intent)
 
         bmiViewModel = ViewModelProvider(this).get(BmiViewModel::class.java)
 
@@ -42,5 +46,16 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        navigateToDashboardFragmentIfNeeded(intent)
+    }
+
+    private fun navigateToDashboardFragmentIfNeeded(intent: Intent?) {
+        if(intent?.action == ACTION_SHOW_TRACKING_FRAGMENT) {
+            findNavController(R.id.main_nav_host_fragment).navigate(R.id.action_global_dashboardFragment)
+        }
     }
 }
