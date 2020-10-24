@@ -1,6 +1,7 @@
 package com.hackheroes.healthybody.ui.main
 
 import android.Manifest
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +17,9 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hackheroes.healthybody.R
+import com.hackheroes.healthybody.services.TrackingService
 import com.hackheroes.healthybody.ui.auth.AuthViewModel
+import com.hackheroes.healthybody.util.Constants.Companion.ACTION_START_OR_RESUME_SERVICE
 import com.hackheroes.healthybody.util.Constants.Companion.REQUEST_CODE_LOCATION_PERMISSION
 import com.hackheroes.healthybody.util.TrackingUtility
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,6 +56,10 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         requestPermissions()
         userId = mAuth.currentUser?.uid!!
 
+        start_run_icon.setOnClickListener {
+            sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
+        }
+
         graph_card_view.setOnClickListener{
             findNavController().navigate(R.id.action_dashboardFragment_to_graphFragment)
         }
@@ -69,6 +76,12 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             kcal_need_value.text = "${user.bmr} kcal"
         })
     }
+
+    private fun sendCommandToService(action: String) =
+        Intent(requireContext(), TrackingService::class.java).also {
+            it.action = action
+            requireContext().startService(it)
+        }
 
     private fun requestPermissions() {
         if(TrackingUtility.hasLocationPermissions(requireContext())) {

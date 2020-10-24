@@ -259,6 +259,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/toggle_run_card_view"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_below="@+id/kcal_need_card_view"
@@ -275,8 +276,8 @@
 
             <TextView
                 android:id="@+id/start_run_icon"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_centerInParent="true"/>
 
         </RelativeLayout>
