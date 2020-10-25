@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.firestore
@@ -21,6 +22,7 @@ import com.hackheroes.healthybody.services.TrackingService
 import com.hackheroes.healthybody.ui.auth.AuthViewModel
 import com.hackheroes.healthybody.util.Constants.Companion.ACTION_PAUSE_SERVICE
 import com.hackheroes.healthybody.util.Constants.Companion.ACTION_START_OR_RESUME_SERVICE
+import com.hackheroes.healthybody.util.Constants.Companion.ACTION_STOP_SERVICE
 import com.hackheroes.healthybody.util.Constants.Companion.REQUEST_CODE_LOCATION_PERMISSION
 import com.hackheroes.healthybody.util.TrackingUtility
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,8 +46,6 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     private lateinit var userId: String
 
-    val personCollectionRef = Firebase.firestore.collection("users")
-
     private var curTimeInMillis = 0L
 
     override fun onCreateView(
@@ -63,6 +63,10 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
         toggle_run_card_view.setOnClickListener {
             toggleRun()
+        }
+
+        cancel_run.setOnClickListener {
+            showCancelTrackingDialog()
         }
 
         graph_card_view.setOnClickListener{
@@ -88,24 +92,49 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         TrackingService.timeRunInMillis.observe(viewLifecycleOwner, Observer {
             curTimeInMillis = it
             val formattedTime = TrackingUtility.getFormattedStopWatchTime(curTimeInMillis, true)
-            username_text_view.text = formattedTime
+            if(curTimeInMillis > 0L) timer_card_view.visibility = View.VISIBLE
+            timer.text = formattedTime
         })
     }
 
     private fun toggleRun() {
         if(isTracking) {
+            timer_card_view.visibility = View.VISIBLE
             sendCommandToService(ACTION_PAUSE_SERVICE)
         } else {
             sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
         }
     }
 
+    private fun showCancelTrackingDialog() {
+        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme)
+            .setTitle("Anulować tę sesję?")
+            .setMessage("Czy na pewno anulować bieżącą sesję i usunąć wszystkie jej dane?")
+            .setIcon(R.drawable.ic_delete)
+            .setPositiveButton("Tak") { _, _ ->
+                stopRun()
+            }
+            .setNegativeButton("Nie") { dialogInterface, _ ->
+                dialogInterface.cancel()
+            }
+            .create()
+        dialog.show()
+    }
+
+    private fun stopRun() {
+        timer_card_view.visibility = View.GONE
+        sendCommandToService(ACTION_STOP_SERVICE)
+    }
+
     private fun updateTracking(isTracking: Boolean) {
         this.isTracking = isTracking
         if(!isTracking) {
-            start_run.text = "Zacznij chodzić"
+            start_run_icon.text = "Zacznij chodzić"
+            finish_run.visibility = View.VISIBLE
         } else {
-            start_run.text = "Stop"
+            start_run_icon.text = "Stop"
+            timer_card_view.visibility = View.GONE
+            finish_run.visibility = View.GONE
         }
     }
 

@@ -147,17 +147,67 @@
 
         </RelativeLayout>
 
-
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/timer_card_view"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/bmi_card_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="#303030"
+        app:cardCornerRadius="50dp"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/cancel_run"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/timer"
+                android:background="@drawable/ic_round_close_24"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00:00:00"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/finish_run"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_round_flag_24"
+                android:layout_centerInParent="true"
+                android:layout_toEndOf="@+id/timer"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="20dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/run_card_view"
         android:layout_width="220dp"
-        android:layout_height="220dp"
+        android:layout_height="210dp"
         android:layout_below="@+id/bmi_card_view"
         android:layout_alignStart="@+id/bmi_card_view"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="2dp"
         app:cardCornerRadius="8dp">
 
@@ -264,7 +314,7 @@
         android:layout_height="100dp"
         android:layout_below="@+id/kcal_need_card_view"
         android:layout_alignEnd="@+id/kcal_need_card_view"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="5dp"
         android:layout_marginStart="2dp"
         app:cardCornerRadius="8dp">
@@ -275,16 +325,15 @@
             android:background="@drawable/run_gradient">
 
             <TextView
-                android:id="@+id/start_run"
+                android:id="@+id/start_run_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+                android:layout_centerInParent="true"
                 android:text="Zacznij chodzić"
                 android:textAlignment="center"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="#fff"
-                android:textSize="16sp"/>
+                android:textSize="20sp"/>
 
         </RelativeLayout>
 
