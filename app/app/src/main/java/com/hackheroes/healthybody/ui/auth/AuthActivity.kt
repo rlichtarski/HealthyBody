@@ -24,8 +24,6 @@ class AuthActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-        //mAuth.signOut()
-
         findNavController(R.id.auth_nav_host_fragment)
         subscribeObservers()
     }

@@ -23,9 +23,17 @@ class MainViewModel @ViewModelInject constructor(
         mainRepository.fetchUserData()
     }
 
+    fun logout() {
+        mainRepository.logout()
+    }
+
     fun insertRun(run: Run) = viewModelScope.launch {
         mainRepository.insertRun(run)
     }
 
     fun getLatestRunByDate(): LiveData<Run> = mainRepository.getLatestRunByDate()
+
+    fun isSignedIn(): LiveData<Boolean> {
+        return mainRepository.isSignedIn
+    }
 }

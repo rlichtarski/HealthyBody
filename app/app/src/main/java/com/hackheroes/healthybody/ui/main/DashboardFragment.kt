@@ -84,11 +84,34 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             endRunAndSaveToDb()
         }
 
+        logout_button.setOnClickListener {
+            showLogoutDialog()
+        }
+
         graph_card_view.setOnClickListener {
             findNavController().navigate(R.id.action_dashboardFragment_to_graphFragment)
         }
 
         subscribeObservers()
+    }
+
+    private fun showLogoutDialog() {
+        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme)
+            .setTitle("Wylogować się?")
+            .setMessage("Czy na pewno anulować bieżącą sesję i usunąć wszystkie jej dane?")
+            .setIcon(R.drawable.ic_delete)
+            .setPositiveButton("Tak") { _, _ ->
+                if(isTracking) {
+                    stopRun()
+                }
+                mainViewModel.logout()
+
+            }
+            .setNegativeButton("Nie") { dialogInterface, _ ->
+                dialogInterface.cancel()
+            }
+            .create()
+        dialog.show()
     }
 
     private fun subscribeObservers() {

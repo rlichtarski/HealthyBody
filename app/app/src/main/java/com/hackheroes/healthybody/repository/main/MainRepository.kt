@@ -32,6 +32,11 @@ constructor(
 
     private lateinit var user: User
 
+    protected val _isSignedIn: MutableLiveData<Boolean> = MutableLiveData()
+
+    val isSignedIn: LiveData<Boolean>
+        get() = _isSignedIn
+
     private val _user: MutableLiveData<User> = MutableLiveData()
 
     val getUser: LiveData<User>
@@ -60,7 +65,16 @@ constructor(
         }
     }
 
+    fun logout() {
+        firebaseAuth.signOut()
+        setIsAuthenticated(isAuthenticated = false)
+    }
+
     suspend fun insertRun(run: Run) = runDao.insertRun(run)
 
     fun getLatestRunByDate(): LiveData<Run> = runDao.getLatestRunByDate()
+
+    private fun setIsAuthenticated(isAuthenticated: Boolean) {
+        _isSignedIn.value = isAuthenticated
+    }
 }

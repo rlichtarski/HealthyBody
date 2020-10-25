@@ -46,7 +46,7 @@
             android:id="@+id/your_weight_card_view"
             android:layout_width="180dp"
             android:layout_height="110dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="8dp"
@@ -104,7 +104,7 @@
             android:layout_width="180dp"
             android:layout_height="110dp"
             android:layout_below="@+id/your_weight_card_view"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="10dp"
@@ -161,10 +161,10 @@
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_alignTop="@+id/your_weight_card_view"
+            android:layout_alignBottom="@+id/your_hight_card_view"
+            android:layout_marginEnd="25dp"
             app:cardCornerRadius="8dp">
 
             <RelativeLayout
