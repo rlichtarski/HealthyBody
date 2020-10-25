@@ -33,6 +33,8 @@ class MainViewModel @ViewModelInject constructor(
 
     fun getLatestRunByDate(): LiveData<Run> = mainRepository.getLatestRunByDate()
 
+    val runsSortedByDate = mainRepository.getAllRunsSortedByDate()
+
     fun isSignedIn(): LiveData<Boolean> {
         return mainRepository.isSignedIn
     }

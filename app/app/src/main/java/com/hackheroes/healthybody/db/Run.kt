@@ -8,7 +8,7 @@ data class Run(
     var avgSpeedInKMH: Float = 0f,
     var distanceInMeters: Int = 0,
     var timeInMillis: Long = 0L,
-    var caloriesBurned: Int = 0
+    var caloriesBurned: Float = 0f
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null

@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "627527c6f1213066d0d07b72994196da",
+    "identityHash": "d12ad5db3acb83675ced945dc7dc2e19",
     "entities": [
       {
         "tableName": "running_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER NOT NULL, `avgSpeedInKMH` REAL NOT NULL, `distanceInMeters` INTEGER NOT NULL, `timeInMillis` INTEGER NOT NULL, `caloriesBurned` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `timestamp` INTEGER NOT NULL, `avgSpeedInKMH` REAL NOT NULL, `distanceInMeters` INTEGER NOT NULL, `timeInMillis` INTEGER NOT NULL, `caloriesBurned` REAL NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -41,7 +41,7 @@
           {
             "fieldPath": "caloriesBurned",
             "columnName": "caloriesBurned",
-            "affinity": "INTEGER",
+            "affinity": "REAL",
             "notNull": true
           }
         ],
@@ -58,7 +58,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '627527c6f1213066d0d07b72994196da')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd12ad5db3acb83675ced945dc7dc2e19')"
     ]
   }
 }

@@ -5,7 +5,7 @@
     <color name="colorAccent">#5C1349</color>
 
 
-
+    <color name="light_dark">#303030</color>
     <color name="md_blue_50">#E3F2FD</color>
     <color name="md_blue_100">#BBDEFB</color>
     <color name="md_blue_200">#90CAF9</color>
@@ -23,4 +23,6 @@
 
     <color name="colorSurface">#303030</color>
 
+    <color name="bar_chart_accent">#039be5</color>
+    
 </resources>

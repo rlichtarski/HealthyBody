@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#202020"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,27 +19,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="50dp"
+            android:layout_marginBottom="30dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Twój wykres"
             android:textAlignment="center"
             android:textColor="#fff"
-            android:textSize="30sp"/>
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/back_arrow_graph"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_arrow_back_24px"
             android:layout_alignTop="@+id/graph_text"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="30dp"
+            android:background="@drawable/ic_arrow_back_24px" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/graph_text"
+            android:layout_alignBottom="@+id/graph_text"
+            android:layout_alignParentBottom="true" />
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/bottom_relative_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -86,9 +98,9 @@
                     android:layout_below="@+id/your_weight_text_view"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/roboto_bold"
                     android:text="00 kg"
                     android:textAlignment="center"
@@ -143,9 +155,9 @@
                     android:layout_below="@+id/your_height_text_view"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/roboto_bold"
                     android:text="000 cm"
                     android:textAlignment="center"
@@ -160,10 +172,10 @@
             android:id="@+id/see_your_meals_card_view"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="8dp"
             android:layout_alignTop="@+id/your_weight_card_view"
             android:layout_alignBottom="@+id/your_hight_card_view"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="25dp"
             app:cardCornerRadius="8dp">
 
@@ -181,7 +193,6 @@
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
-
 
     </RelativeLayout>
 

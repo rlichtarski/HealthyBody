@@ -74,6 +74,8 @@ constructor(
 
     fun getLatestRunByDate(): LiveData<Run> = runDao.getLatestRunByDate()
 
+    fun getAllRunsSortedByDate() = runDao.getAllRunsSortedByDate()
+
     private fun setIsAuthenticated(isAuthenticated: Boolean) {
         _isSignedIn.value = isAuthenticated
     }

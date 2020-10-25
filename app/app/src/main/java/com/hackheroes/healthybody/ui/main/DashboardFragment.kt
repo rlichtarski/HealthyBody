@@ -214,7 +214,7 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         val dateTimestamp = Calendar.getInstance().timeInMillis
         val caloriesBurned = ((distanceInMeters / 1000f) * userWeight.toFloat()).toInt()
         val run =
-            Run(dateTimestamp, avgSpeed, distanceInMeters, curTimeInMillis, caloriesBurned)
+            Run(dateTimestamp, avgSpeed, distanceInMeters, curTimeInMillis, caloriesBurned.toFloat())
         mainViewModel.insertRun(run)
         Timber.d("run saved successfully")
         stopRun()
