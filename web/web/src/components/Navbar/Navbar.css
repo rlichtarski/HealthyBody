@@ -6,5 +6,7 @@
 
 .navbar { 
     color: white;
-    background: linear-gradient(to right,#363636, #47d442);
+    /* background: linear-gradient(to right,#363636, #47d442); */
+    background: linear-gradient(to right,#38f8d4, #43ea80);
+
 }
