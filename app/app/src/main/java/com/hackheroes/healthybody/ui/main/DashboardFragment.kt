@@ -99,7 +99,7 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme)
             .setTitle("Wylogować się?")
             .setMessage("Czy na pewno anulować bieżącą sesję i usunąć wszystkie jej dane?")
-            .setIcon(R.drawable.ic_delete)
+            .setIcon(R.drawable.ic_round_error_outline_24)
             .setPositiveButton("Tak") { _, _ ->
                 if(isTracking) {
                     stopRun()
