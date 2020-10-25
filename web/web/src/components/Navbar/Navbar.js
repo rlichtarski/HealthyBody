@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import './Navbar.css';
 import { config } from '../../utils/config';
 import { toggleClass } from './navbarController';
-import { logo } from '../../assets/logo.svg';
+import { Link } from 'react-router-dom';
+const logo = require('../../assets/SVG/logo.svg')
 
 class Navbar extends Component {
     render() {
@@ -18,13 +19,14 @@ class Navbar extends Component {
             </Wrapper>
                     <Menu>
                         <div className="menu">
-                            {/* <HeaderLogo src="https://i.picsum.photos/id/908/200/200.jpg?hmac=CovMVsq4EkU03tnOxNLyxYsLlemPPHBizxcnmaHaRcU"/> */}
-                            <HeaderLogo src={logo}/>
+                            <Link to="/"><HeaderLogo src={logo}/>Body Health</Link>
                             <div className="navbarList">
-                                <h1>Zdrowie</h1>
-                                <h1>Dieta &amp; Fitness</h1>
-                                <h1>Wiadomości</h1>
-                                <h1>Kalkulatory</h1>
+                                <NavLink to="/">Zdrowie</NavLink>
+                                <NavLink to="/diet">Dieta &amp; Fitness</NavLink>
+                                {/* <NavLink>Wiadomości</NavLink> */}
+                                <NavLink to="/calculator">Kalkulatory</NavLink>
+                                <NavLink to="/mobile">Mobilna Wersja</NavLink>
+                                {/* <a app target="_blank" href="https://github.com/rradzzio/HealthyBody/tree/main/app">Mobilna wersja</a> */}
                                 </div>
                             </div>
                     </Menu>
@@ -33,7 +35,37 @@ class Navbar extends Component {
     }
 }
 
+const NavLink = styled(Link)`
+    color: white;
+    text-decoration: none;
+    transition: linear 0.4s all;
+    margin: 0 1.5rem;
+    font-size: ${props => props.app ? '1.3rem' : '1.1rem'};
+    font-weight: bold;
+
+        &:hover{
+            color: white;
+            background: #000523;
+            border-radius: -20%;
+            
+        }
+`
+
 const Menu = styled.div`
+
+    a {
+        text-decoration: none;
+        margin: 0.2rem 2rem;
+        color: black;
+        transition: linear 0.3s;
+    }
+
+    a:hover{
+            color: white;
+            background: #000523;
+            border-radius: -20%;
+            
+        }
 
     .menu > .navbarList {
         display: flex;
@@ -41,11 +73,13 @@ const Menu = styled.div`
         justify-content: center;
         align-items: center;
         font-family: ${config.fonts.Playfair};
+        color: white;
     }
 
     .menu > .navbarList > h1{
         font-size: 1.5rem;
         margin: 1rem;
+        color: white;
     }
 
     #contactH1 {
@@ -60,7 +94,7 @@ const Menu = styled.div`
     .menuToggle {
         display: block;
         z-index: 100;
-        background-color: black;
+        background: rgba(0,0,0, 0.3);
         position: absolute;
         height: 95%;
         width: 100%;
@@ -69,7 +103,9 @@ const Menu = styled.div`
     @media (min-width: 768px) {
         .menu{
             display: flex;
-            justify-content: space-around;
+            font-size: 1.5rem;
+            justify-content: space-between;
+            align-items: center;
             /* border-bottom: blueviolet 1px solid; */
         }
 
@@ -79,16 +115,6 @@ const Menu = styled.div`
             align-items: center;
         }
 
-        h1 {
-            transition: linear 0.2s all;
-        }
-
-        h1:hover{
-            color: white;
-            background: #000523;
-            border-radius: -20%;
-            
-        }
 
         .menu > .navbarList > h1 {
             font-size: 1rem;
@@ -96,6 +122,12 @@ const Menu = styled.div`
 
         .menuToggle {
             display: none;
+        }
+
+        img { 
+            height: 2.5rem;
+            width: 2rem;
+            margin: 0 1rem;
         }
     }
 `
@@ -124,6 +156,7 @@ const Hamburger = styled.div`
         background-color: white;
         border-radius: 15%;
         transition: all ease 1s;
+        margin-bottom: 0.70rem;
     }
 
     .hamburger::before {
@@ -135,6 +168,7 @@ const Hamburger = styled.div`
         background-color: white;
         border-radius: 15%;
         transition: all ease 3s;
+        margin-bottom: 0.70rem;
     }
 
     .hamburger::after {
@@ -146,6 +180,7 @@ const Hamburger = styled.div`
         background-color: white;
         border-radius: 15%;
         transition: all ease 1s;
+        margin-bottom: 0.70rem;
     }
 
     .expanded {
