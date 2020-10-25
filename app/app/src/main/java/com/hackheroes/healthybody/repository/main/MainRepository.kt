@@ -62,4 +62,5 @@ constructor(
 
     suspend fun insertRun(run: Run) = runDao.insertRun(run)
 
+    fun getLatestRunByDate(): LiveData<Run> = runDao.getLatestRunByDate()
 }

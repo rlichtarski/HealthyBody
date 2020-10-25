@@ -232,7 +232,7 @@
                 android:layout_alignBottom="@+id/image_shoe"
                 android:layout_marginEnd="15dp"
                 android:layout_toEndOf="@+id/image_shoe"
-                android:text="Dzisiaj chodziłeś i spaliłeś"
+                android:text="Ostatnio chodziłeś i spaliłeś"
                 android:textAlignment="center"
                 android:textColor="#fff"
                 android:textSize="18sp" />
@@ -258,7 +258,7 @@
                 android:layout_marginEnd="15dp"
                 android:layout_below="@+id/burned_calories_value"
                 android:layout_centerHorizontal="true"
-                android:text="Najwyższa prędkość:"
+                android:text="Średnia prędkość:"
                 android:textAlignment="center"
                 android:textColor="#fff"
                 android:textSize="16sp" />

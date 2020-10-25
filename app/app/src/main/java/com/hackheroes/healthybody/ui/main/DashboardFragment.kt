@@ -109,12 +109,22 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             pathPoints = it
         })
 
+        mainViewModel.getLatestRunByDate().observe(viewLifecycleOwner, Observer { run ->
+            setLatestRunValues(run)
+        })
+
         TrackingService.timeRunInMillis.observe(viewLifecycleOwner, Observer {
             curTimeInMillis = it
             val formattedTime = TrackingUtility.getFormattedStopWatchTime(curTimeInMillis, true)
             if (curTimeInMillis > 0L) timer_card_view.visibility = View.VISIBLE
             timer.text = formattedTime
         })
+    }
+
+    private fun setLatestRunValues(run: Run?) {
+        burned_calories_value.text = "${run?.caloriesBurned.toString()} kcal"
+        highest_velocity_value.text = "${run?.avgSpeedInKMH.toString()} km/h"
+        walked_distance_value.text = "${run?.distanceInMeters.toString()} m"
     }
 
     private fun toggleRun() {
