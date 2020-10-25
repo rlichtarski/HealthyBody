@@ -47,6 +47,12 @@ constructor(
                             val user = mutableMapOf<String, Any>()
                             user["name"] = username
                             user["email"] = email
+                            user["weight"] = "00.00"
+                            user["sex"] = "null"
+                            user["height"] = "000.00"
+                            user["age"] = "00"
+                            user["bmi"] = "00.0"
+                            user["bmr"] = "0000.0"
                             documentReference.set(user).addOnSuccessListener {
                                 Timber.e("attemptRegistration: user profile is created for: + $userId")
                             }

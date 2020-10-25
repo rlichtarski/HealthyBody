@@ -118,10 +118,15 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         mainViewModel.fetchUserData()
 
         mainViewModel.getUserData.observe(viewLifecycleOwner, Observer { user ->
-            bmi_value.text = user.bmi
+            if(user.bmi.equals("00.0") || user.bmr.equals("0000.0")) {
+                no_bmi_data_card_view.visibility = View.VISIBLE
+            } else {
+                no_bmi_data_card_view.visibility = View.GONE
+                bmi_value.text = user.bmi
+                kcal_need_value.text = "${user.bmr} kcal"
+                userWeight = user.weight!!
+            }
             username_text_view.text = "Witaj ${user.name}"
-            kcal_need_value.text = "${user.bmr} kcal"
-            userWeight = user.weight!!
         })
 
         TrackingService.isTracking.observe(viewLifecycleOwner, Observer {
@@ -145,9 +150,17 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     }
 
     private fun setLatestRunValues(run: Run?) {
-        burned_calories_value.text = "${run?.caloriesBurned.toString()} kcal"
-        highest_velocity_value.text = "${run?.avgSpeedInKMH.toString()} km/h"
-        walked_distance_value.text = "${run?.distanceInMeters.toString()} m"
+        if(run?.caloriesBurned.toString().equals("null")
+            || run?.avgSpeedInKMH.toString().equals("null")
+            || run?.distanceInMeters.toString().equals("null")) {
+            burned_calories_value.text = "0000 kcal"
+            highest_velocity_value.text = "000 km/h"
+            walked_distance_value.text = "0000 m"
+        } else {
+            burned_calories_value.text = "${run?.caloriesBurned.toString()} kcal"
+            highest_velocity_value.text = "${run?.avgSpeedInKMH.toString()} km/h"
+            walked_distance_value.text = "${run?.distanceInMeters.toString()} m"
+        }
     }
 
     private fun toggleRun() {
