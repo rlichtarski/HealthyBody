@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/breakfast_text"
-        android:text="jajecznica z boczkiem"
+        android:text="chleb żytni z serem i pomidorem"
         android:textColor="#fff"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lunch_text"
-        android:text="2x kanapki z szynką"
+        android:text="miska owoców z granolą"
         android:textColor="#fff"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
@@ -94,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/dinner_text"
-        android:text="filet z kurczaka razem z kluskami śląskimi"
+        android:text="filet z kurczaka razem z puree z marchewki"
         android:textColor="#fff"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
@@ -118,12 +118,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/supper_text"
-        android:text="jajecznica z boczkiem"
+        android:text="kokosowy ryż z mango"
         android:textColor="#fff"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:fontFamily="@font/roboto_bold"
         android:textSize="25sp"/>
-
-
+    
 </RelativeLayout>

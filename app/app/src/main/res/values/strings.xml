@@ -4,4 +4,93 @@
     <string name="data_not_used">Twoje dane nie zostaną nigdzie udostępnione i wykorzystane</string>
     <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>
     <string name="google_maps_key">AIzaSyCcHBR8FpcrQGds2EryqjpNuQ7jhv5qUxU</string>
+
+    <string-array name="breakfast">
+        <item>owsianka z owocami</item>
+        <item>chleb żytni z serem i pomidorem</item>
+        <item>jajecznica</item>
+        <item>jogurt z chlebem razowym</item>
+        <item>shake</item>
+        <item>sałatka z warzyw</item>
+        <item>jogurt naturalny z musli i owocami</item>
+        <item>kasza jaglana z owocami</item>
+        <item>placki z płatków owsianych</item>
+        <item>jajko zapiekane w awokado </item>
+        <item>sałatka z kaszą gryczaną i warzywami</item>
+        <item>placuszki z mąki kukurydzianej</item>
+        <item>koktajl mandarynkowo-bananowy </item>
+        <item>koktajl z buraka i banana</item>
+        <item>koktajl z grukoli, gruszki i banana</item>
+        <item>czekoladowy krem z awokado</item>
+        <item>pasta kanapkowa z zielonego groszku</item>
+        <item>placki owsiane z cynamonem </item>
+        <item>jajecznica z boczkiem</item>
+    </string-array>
+
+    <string-array name="lunch">
+        <item>ulubiony owoc</item>
+        <item>placki ze szpinakiem</item>
+        <item>miska owoców z granolą</item>
+        <item>budyń kokosowy</item>
+        <item>jogurt z migdałów</item>
+        <item>owsianka czekoladowa z owocami</item>
+        <item>pieczone truskawki w sezamie z ryżem</item>
+        <item>pudding shia</item>
+        <item>banan z masłem orzechowym</item>
+        <item>smoothie z odżywki białkowej</item>
+        <item>jabłko z masłem orzechowym</item>
+        <item>serek grecki z granolą</item>
+        <item>granola</item>
+        <item>ulubiony owoc</item>
+        <item>ulubiony owoc z kromką chleba razowego </item>
+        <item>ulubiony owoc </item>
+        <item>musli </item>
+        <item>ulubiony owoc z kefirem </item>
+        <item>shake proteinowy </item>
+    </string-array>
+
+    <string-array name="dinner">
+        <item>kurczak z ryżem </item>
+        <item>pizza na bazie tortilli z warzywami </item>
+        <item>zupa warzywna </item>
+        <item>zapiekanka warzywna </item>
+        <item>makaron pesto z groszku </item>
+        <item>filet z kurczaka razem z puree z marchewki </item>
+        <item>kasza gryczana z gotowanym kurczakiem </item>
+        <item>placki z cukini </item>
+        <item>cukinia nadziewana z soczewicą </item>
+        <item>kotleciki gryczano-warzywne </item>
+        <item>kurczak w panierce z płatków owsianych </item>
+        <item>krem z buraków </item>
+        <item>kotlety z dorsza </item>
+        <item>tarta z łososiem i szpinakiem </item>
+        <item>placki dyniowe </item>
+        <item>zapiekanka gryczana z jabłkiem </item>
+        <item>kotlety z botwinką </item>
+        <item>risotto dinowe z soczewicą </item>
+        <item>krem z cukini </item>
+    </string-array>
+
+    <string-array name="supper">
+        <item>cukinia zapiekana </item>
+        <item>kokosowy ryż z mango </item>
+        <item>warzywa w sosie sezamowym </item>
+        <item>sałatka z winogronem i kurczakiem </item>
+        <item>potrawka proteinowa </item>
+        <item>kalafior po grecku </item>
+        <item>ryż w warzywami </item>
+        <item>sałatka z kiełkami i warzywami </item>
+        <item>kanapki z pastą roślinną </item>
+        <item>kalafior po grecku </item>
+        <item>papryka faszerowana warzywami i ryżem </item>
+        <item>risotto z warzywami </item>
+        <item>budyń light </item>
+        <item>sałatka </item>
+        <item>jogurt po grecku z warzywami </item>
+        <item>jajko sadzone </item>
+        <item>naleśniki z płatków owsianych z owocami </item>
+        <item>pizza na bazie tortilli z warzywami </item>
+        <item>chleb razowy z warzywami </item>
+    </string-array>
+
 </resources>
