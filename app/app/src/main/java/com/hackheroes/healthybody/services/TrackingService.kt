@@ -22,10 +22,8 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.maps.model.LatLng
-import com.hackheroes.healthybody.MainActivity
 import com.hackheroes.healthybody.R
 import com.hackheroes.healthybody.util.Constants.Companion.ACTION_PAUSE_SERVICE
-import com.hackheroes.healthybody.util.Constants.Companion.ACTION_SHOW_TRACKING_FRAGMENT
 import com.hackheroes.healthybody.util.Constants.Companion.ACTION_START_OR_RESUME_SERVICE
 import com.hackheroes.healthybody.util.Constants.Companion.ACTION_STOP_SERVICE
 import com.hackheroes.healthybody.util.Constants.Companion.FASTEST_LOCATION_INTERVAL

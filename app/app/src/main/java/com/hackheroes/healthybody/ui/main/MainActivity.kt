@@ -1,4 +1,4 @@
-package com.hackheroes.healthybody
+package com.hackheroes.healthybody.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,18 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.hackheroes.healthybody.ui.BmiViewModel
+import com.hackheroes.healthybody.R
 import com.hackheroes.healthybody.util.Constants.Companion.ACTION_SHOW_TRACKING_FRAGMENT
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val TAG = "MainActivity"
-
-    lateinit var bmiViewModel: BmiViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,26 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         navigateToDashboardFragmentIfNeeded(intent)
 
-        bmiViewModel = ViewModelProvider(this).get(BmiViewModel::class.java)
-
         findNavController(R.id.main_nav_host_fragment)
 
-        subscribeObservers()
-    }
-
-    private fun subscribeObservers() {
-        bmiViewModel.getBmi().observe(this, Observer { dataState ->
-            dataState.data?.let {data ->
-                data.data?.let { event ->
-                    event.getContentIfNotHandled()?.let {
-                        it.bmiResponse?.let { response ->
-                            Log.d(TAG, "subscribeObservers: response: $response")
-                        }
-                    }
-                }
-
-            }
-        })
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -55,7 +34,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun navigateToDashboardFragmentIfNeeded(intent: Intent?) {
         if(intent?.action == ACTION_SHOW_TRACKING_FRAGMENT) {
-            findNavController(R.id.main_nav_host_fragment).navigate(R.id.action_global_dashboardFragment)
+            findNavController(R.id.main_nav_host_fragment).navigate(
+                R.id.action_global_dashboardFragment
+            )
         }
     }
 }

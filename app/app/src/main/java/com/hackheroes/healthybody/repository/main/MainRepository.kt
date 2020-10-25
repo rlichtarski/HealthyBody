@@ -9,6 +9,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.hackheroes.healthybody.db.Run
+import com.hackheroes.healthybody.db.RunDAO
 import com.hackheroes.healthybody.models.User
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import javax.inject.Inject
@@ -18,7 +20,8 @@ class MainRepository
 constructor(
     val appContext: Context,
     val firebaseAuth: FirebaseAuth,
-    var fireStore: FirebaseFirestore
+    var fireStore: FirebaseFirestore,
+    val runDao: RunDAO
 ) {
 
     private val userId: String = firebaseAuth.currentUser?.uid!!
@@ -56,5 +59,7 @@ constructor(
 
         }
     }
+
+    suspend fun insertRun(run: Run) = runDao.insertRun(run)
 
 }

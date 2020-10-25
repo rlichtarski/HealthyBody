@@ -13,12 +13,16 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hackheroes.healthybody.R
+import com.hackheroes.healthybody.db.Run
+import com.hackheroes.healthybody.services.Polyline
 import com.hackheroes.healthybody.services.TrackingService
+import com.hackheroes.healthybody.services.TrackingService.Companion.pathPoints
 import com.hackheroes.healthybody.ui.auth.AuthViewModel
 import com.hackheroes.healthybody.util.Constants.Companion.ACTION_PAUSE_SERVICE
 import com.hackheroes.healthybody.util.Constants.Companion.ACTION_START_OR_RESUME_SERVICE
@@ -32,7 +36,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
+import timber.log.Timber
+import java.lang.Math.round
+import java.util.*
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 @AndroidEntryPoint
 class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
@@ -43,10 +51,13 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private val mainViewModel: MainViewModel by viewModels()
 
     private var isTracking = false
+    private var pathPoints = mutableListOf<Polyline>()
 
     private lateinit var userId: String
 
     private var curTimeInMillis = 0L
+
+    private lateinit var userWeight: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,7 +80,11 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             showCancelTrackingDialog()
         }
 
-        graph_card_view.setOnClickListener{
+        finish_run.setOnClickListener {
+            endRunAndSaveToDb()
+        }
+
+        graph_card_view.setOnClickListener {
             findNavController().navigate(R.id.action_dashboardFragment_to_graphFragment)
         }
 
@@ -83,22 +98,27 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             bmi_value.text = user.bmi
             username_text_view.text = "Witaj ${user.name}"
             kcal_need_value.text = "${user.bmr} kcal"
+            userWeight = user.weight!!
         })
 
         TrackingService.isTracking.observe(viewLifecycleOwner, Observer {
             updateTracking(it)
         })
 
+        TrackingService.pathPoints.observe(viewLifecycleOwner, Observer {
+            pathPoints = it
+        })
+
         TrackingService.timeRunInMillis.observe(viewLifecycleOwner, Observer {
             curTimeInMillis = it
             val formattedTime = TrackingUtility.getFormattedStopWatchTime(curTimeInMillis, true)
-            if(curTimeInMillis > 0L) timer_card_view.visibility = View.VISIBLE
+            if (curTimeInMillis > 0L) timer_card_view.visibility = View.VISIBLE
             timer.text = formattedTime
         })
     }
 
     private fun toggleRun() {
-        if(isTracking) {
+        if (isTracking) {
             timer_card_view.visibility = View.VISIBLE
             sendCommandToService(ACTION_PAUSE_SERVICE)
         } else {
@@ -128,7 +148,7 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     private fun updateTracking(isTracking: Boolean) {
         this.isTracking = isTracking
-        if(!isTracking) {
+        if (!isTracking) {
             start_run_icon.text = "Zacznij chodzić"
             finish_run.visibility = View.VISIBLE
         } else {
@@ -138,6 +158,22 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         }
     }
 
+    private fun endRunAndSaveToDb() {
+        var distanceInMeters = 0
+        for (polyline in pathPoints) {
+            distanceInMeters += TrackingUtility.calculatePolylineLength(polyline).toInt()
+        }
+        val avgSpeed =
+            ((distanceInMeters / 1000f) / (curTimeInMillis / 1000f / 60 / 60) * 10).roundToInt() / 10f
+        val dateTimestamp = Calendar.getInstance().timeInMillis
+        val caloriesBurned = ((distanceInMeters / 1000f) * userWeight.toFloat()).toInt()
+        val run =
+            Run(dateTimestamp, avgSpeed, distanceInMeters, curTimeInMillis, caloriesBurned)
+        mainViewModel.insertRun(run)
+        Timber.d("run saved successfully")
+        stopRun()
+    }
+
     private fun sendCommandToService(action: String) =
         Intent(requireContext(), TrackingService::class.java).also {
             it.action = action
@@ -145,10 +181,10 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         }
 
     private fun requestPermissions() {
-        if(TrackingUtility.hasLocationPermissions(requireContext())) {
+        if (TrackingUtility.hasLocationPermissions(requireContext())) {
             return
         }
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             EasyPermissions.requestPermissions(
                 this,
                 "Aby korzystać z tej aplikacji, musisz zaakceptować uprawnienia do lokalizacji.",
@@ -169,7 +205,7 @@ class DashboardFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-        if(EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             AppSettingsDialog.Builder(this)
                 .setPositiveButton("Ok")
                 .setNegativeButton("Anuluj")

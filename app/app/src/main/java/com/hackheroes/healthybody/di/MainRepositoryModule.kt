@@ -3,6 +3,7 @@ package com.hackheroes.healthybody.di
 import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.hackheroes.healthybody.db.RunDAO
 import com.hackheroes.healthybody.repository.auth.AuthRepository
 import com.hackheroes.healthybody.repository.main.MainRepository
 import dagger.Module
@@ -21,9 +22,10 @@ object MainRepositoryModule {
     fun provideMainRepository(
         @ApplicationContext appContext: Context,
         firebaseAuth: FirebaseAuth,
-        fireStore: FirebaseFirestore
+        fireStore: FirebaseFirestore,
+        runDao: RunDAO
     ): MainRepository {
-        return MainRepository(appContext, firebaseAuth, fireStore)
+        return MainRepository(appContext, firebaseAuth, fireStore, runDao)
     }
 
 }

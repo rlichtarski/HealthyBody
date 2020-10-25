@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.hackheroes.healthybody.MainActivity
+import com.hackheroes.healthybody.ui.main.MainActivity
 import com.hackheroes.healthybody.R
 import com.hackheroes.healthybody.util.Constants
 import dagger.Module
